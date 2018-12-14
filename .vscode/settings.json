@@ -26,6 +26,10 @@
     "test/**/__snapshots__": true,
     "yarn.lock": true
   },
-  "javascript.implicitProjectConfig.checkJs": true,
-  "typescript.implementationsCodeLens.enabled": true
+
+  "tslint.jsEnable": true,
+  "tslint.packageManager": "yarn",
+  "tslint.autoFixOnSave": true,
+
+  "editor.formatOnSave": false
 }

@@ -1,0 +1,16 @@
+{
+  "defaultSeverity": "error",
+  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
+  "jsRules": {
+    "object-literal-sort-keys": false,
+    "trailing-comma": false
+  },
+  "rules": {
+    "object-literal-sort-keys": false,
+    "trailing-comma": false
+  },
+  "rulesDirectory": [],
+  "linterOptions": {
+    "exclude": ["app/main.prod.js", "app/main.dev.js", "app/dist/*"]
+  }
+}

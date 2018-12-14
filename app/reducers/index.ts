@@ -1,8 +1,8 @@
-import { combineReducers } from 'redux';
 import { connectRouter } from 'connected-react-router';
+import { History } from 'history';
+import { combineReducers } from 'redux';
 
-// TODO: any type
-export default function createRootReducer(history: any) {
+export default function createRootReducer(history: History) {
   return combineReducers({
     router: connectRouter(history)
   });

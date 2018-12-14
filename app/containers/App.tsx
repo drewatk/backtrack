@@ -5,14 +5,14 @@ interface IAppProps {
 }
 
 export default class App extends React.Component<IAppProps> {
-  props!: IAppProps;
+  public props!: IAppProps;
 
   constructor(props: IAppProps) {
     super(props);
   }
 
-  render() {
+  public render() {
     const { children } = this.props;
-    return <React.Fragment>{children}</React.Fragment>;
+    return <>{children}</>;
   }
 }

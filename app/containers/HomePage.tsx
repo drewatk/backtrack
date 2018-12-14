@@ -1,8 +1,6 @@
 import React from 'react';
 import Home from '../components/Home';
 
-interface IHomePageProps {}
-
-const HomePage = (props: IHomePageProps) => <Home />;
+const HomePage = (props: {}) => <Home />;
 
 export default HomePage;

@@ -96,7 +96,6 @@ app.on('ready', async () => {
   const menuBuilder = new MenuBuilder(mainWindow);
   menuBuilder.buildMenu();
 
-  // Remove this if your app does not use auto updates
-  // eslint-disable-next-line
-  new AppUpdater();
+  // TODO: Remove this if your app does not use auto updates
+  new AppUpdater(); // tslint:disable-line no-unused-expression
 });
