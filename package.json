@@ -32,11 +32,15 @@
     "test-e2e": "node -r @babel/register ./internals/scripts/CheckBuiltsExist.js && cross-env NODE_ENV=test testcafe electron:./ ./test/e2e/HomePage.e2e.js",
     "test-e2e-live": "node -r @babel/register ./internals/scripts/CheckBuiltsExist.js && cross-env NODE_ENV=test testcafe-live electron:./ ./test/e2e/HomePage.e2e.js",
     "test-watch": "yarn test --watch",
-    "tslint-check": "tslint-config-prettier-check ./tslint.json"
+    "tslint-check": "tslint-config-prettier-check ./tslint.json",
+    "ts-check": "tsc --build tsconfig.json"
   },
   "lint-staged": {
+    "*app/*.{js,jsx,ts,tsx}": [
+      "cross-env NODE_ENV=development tslint -c tslint.json -p tsconfig.json --fix",
+      "git add"
+    ],
     "*.{js,jsx,ts,tsx}": [
-      "cross-env NODE_ENV=development tslint -c tslint.json -p tsconfig.json",
       "prettier --ignore-path .eslintignore --single-quote --write",
       "git add"
     ],
@@ -177,8 +181,11 @@
     "@babel/register": "^7.0.0",
     "@types/history": "^4.7.2",
     "@types/react": "^16.7.17",
+    "@types/react-dom": "^16.0.11",
     "@types/react-redux": "^6.0.11",
     "@types/react-router-dom": "^4.3.1",
+    "@types/redux-logger": "^3.0.6",
+    "@types/semver": "^5.5.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",

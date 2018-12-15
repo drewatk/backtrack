@@ -1,5 +1,4 @@
-/* eslint global-require: off */
-
+// tslint:disable:no-var-requires no-console
 /**
  * This module executes inside of electron's main process. You can start
  * electron renderer process from here and communicate with the other processes
@@ -11,8 +10,8 @@
  *
  */
 import { app, BrowserWindow } from 'electron';
-import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
+import { autoUpdater } from 'electron-updater';
 import MenuBuilder from './menu';
 
 export default class AppUpdater {
@@ -23,7 +22,7 @@ export default class AppUpdater {
   }
 }
 
-let mainWindow = null;
+let mainWindow: BrowserWindow | null = null;
 
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support');
