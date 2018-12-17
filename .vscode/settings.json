@@ -31,5 +31,7 @@
   "tslint.packageManager": "yarn",
   "tslint.autoFixOnSave": true,
 
-  "editor.formatOnSave": false
+  "typescript.validate.enable": true,
+
+  "editor.formatOnSave": true
 }

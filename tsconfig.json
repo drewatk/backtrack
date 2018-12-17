@@ -17,6 +17,6 @@
     // allow JSX
     "jsx": "react"
   },
-  "include": ["app"],
+  "include": ["app", "test", "internals"],
   "exclude": ["app/main.prod.js", "app/dist/*"]
 }

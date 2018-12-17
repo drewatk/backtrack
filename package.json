@@ -9,7 +9,7 @@
     "build-e2e": "cross-env E2E_BUILD=true yarn build",
     "build-main": "cross-env NODE_ENV=production webpack --config ./configs/webpack.config.main.prod.babel.js --colors",
     "build-renderer": "cross-env NODE_ENV=production webpack --config ./configs/webpack.config.renderer.prod.babel.js --colors",
-    "dev": "cross-env START_HOT=1 node -r @babel/register ./internals/scripts/CheckPortInUse.js && cross-env START_HOT=1 yarn start-renderer-dev",
+    "dev": "cross-env START_HOT=1 node -r ./internals/scripts/BabelRegisterWithTS ./internals/scripts/CheckPortInUse.js && cross-env START_HOT=1 yarn start-renderer-dev",
     "lint": "cross-env NODE_ENV=development tslint -c tslint.json -p tsconfig.json",
     "lint-fix": "yarn --silent lint --fix; exit 0",
     "lint-styles": "stylelint --ignore-path .eslintignore '**/*.*(css|scss)' --syntax scss",
@@ -24,12 +24,12 @@
     "postlint-styles-fix": "prettier --ignore-path .eslintignore --single-quote --write '**/*.{css,scss}'",
     "prestart": "yarn build",
     "start": "cross-env NODE_ENV=production electron ./app/main.prod.js",
-    "start-main-dev": "cross-env HOT=1 NODE_ENV=development electron -r @babel/register ./app/main.dev.js",
+    "start-main-dev": "cross-env HOT=1 NODE_ENV=development electron -r ./internals/scripts/BabelRegisterWithTS ./app/main.dev.ts",
     "start-renderer-dev": "cross-env NODE_ENV=development webpack-dev-server --config configs/webpack.config.renderer.dev.babel.js",
     "test": "cross-env NODE_ENV=test BABEL_DISABLE_CACHE=1 jest",
     "test-all": "yarn lint && yarn build && yarn test && yarn build-e2e && yarn test-e2e",
-    "test-e2e": "node -r @babel/register ./internals/scripts/CheckBuiltsExist.js && cross-env NODE_ENV=test testcafe electron:./ ./test/e2e/HomePage.e2e.js",
-    "test-e2e-live": "node -r @babel/register ./internals/scripts/CheckBuiltsExist.js && cross-env NODE_ENV=test testcafe-live electron:./ ./test/e2e/HomePage.e2e.js",
+    "test-e2e": "node -r ./internals/scripts/BabelRegisterWithTS ./internals/scripts/CheckBuiltsExist.ts && cross-env NODE_ENV=test testcafe electron:./ ./test/e2e/HomePage.e2e.js",
+    "test-e2e-live": "node -r ./internals/scripts/BabelRegisterWithTS ./internals/scripts/CheckBuiltsExist.ts && cross-env NODE_ENV=test testcafe-live electron:./ ./test/e2e/HomePage.e2e.js",
     "test-watch": "yarn test --watch",
     "tslint-check": "tslint-config-prettier-check ./tslint.json",
     "ts-check": "tsc --build tsconfig.json"
@@ -144,13 +144,15 @@
     "moduleFileExtensions": [
       "js",
       "jsx",
-      "json"
+      "json",
+      "ts",
+      "tsx"
     ],
     "transform": {
       "^.+\\.jsx?$": "babel-jest"
     },
     "setupFiles": [
-      "./internals/scripts/CheckBuiltsExist.js"
+      "./internals/scripts/CheckBuiltsExist.ts"
     ]
   },
   "devDependencies": {
@@ -179,12 +181,14 @@
     "@babel/preset-typescript": "^7.1.0",
     "@babel/register": "^7.0.0",
     "@types/history": "^4.7.2",
+    "@types/jest": "^23.3.10",
     "@types/react": "^16.7.17",
     "@types/react-dom": "^16.0.11",
     "@types/react-redux": "^6.0.11",
     "@types/react-router-dom": "^4.3.1",
     "@types/redux-logger": "^3.0.6",
     "@types/semver": "^5.5.0",
+    "@types/sinon": "^7.0.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
@@ -217,9 +221,10 @@
     "eslint-plugin-testcafe": "^0.2.1",
     "fbjs-scripts": "^1.0.1",
     "file-loader": "^2.0.0",
+    "fork-ts-checker-webpack-plugin": "^0.5.2",
     "husky": "^1.1.4",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^23.6.0",
+    "jest": "23.3",
     "lint-staged": "^8.1.0",
     "mini-css-extract-plugin": "^0.5.0",
     "node-sass": "^4.11.0",
