@@ -15,7 +15,10 @@
     // Import non-ES modules as default imports.
     "esModuleInterop": true,
     // allow JSX
-    "jsx": "react"
+    "jsx": "react",
+    // Emit warnings for unused locals and function parameters
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
   },
   "include": ["app"],
   "exclude": ["app/main.prod.js", "app/dist/*"]
