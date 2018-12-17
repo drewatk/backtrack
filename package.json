@@ -28,11 +28,11 @@
     "start-renderer-dev": "cross-env NODE_ENV=development webpack-dev-server --config configs/webpack.config.renderer.dev.babel.js",
     "test": "cross-env NODE_ENV=test BABEL_DISABLE_CACHE=1 jest",
     "test-all": "yarn lint && yarn build && yarn test && yarn build-e2e && yarn test-e2e",
-    "test-e2e": "node -r ./internals/scripts/BabelRegisterWithTS ./internals/scripts/CheckBuiltsExist.ts && cross-env NODE_ENV=test testcafe electron:./ ./test/e2e/HomePage.e2e.js",
-    "test-e2e-live": "node -r ./internals/scripts/BabelRegisterWithTS ./internals/scripts/CheckBuiltsExist.ts && cross-env NODE_ENV=test testcafe-live electron:./ ./test/e2e/HomePage.e2e.js",
+    "test-e2e": "node -r ./internals/scripts/BabelRegisterWithTS ./internals/scripts/CheckBuiltsExist.js && cross-env NODE_ENV=test testcafe electron:./ ./test/e2e/HomePage.e2e.js",
+    "test-e2e-live": "node -r ./internals/scripts/BabelRegisterWithTS ./internals/scripts/CheckBuiltsExist.js && cross-env NODE_ENV=test testcafe-live electron:./ ./test/e2e/HomePage.e2e.js",
     "test-watch": "yarn test --watch",
     "tslint-check": "tslint-config-prettier-check ./tslint.json",
-    "ts-check": "tsc --build tsconfig.json"
+    "ts-check": "tsc --build tsconfig.json && tsc --build test/tsconfig.jest.json && tsc --build test/tsconfig.testcafe.json"
   },
   "lint-staged": {
     "*app/*.{js,jsx,ts,tsx}": [
@@ -152,7 +152,7 @@
       "^.+\\.jsx?$": "babel-jest"
     },
     "setupFiles": [
-      "./internals/scripts/CheckBuiltsExist.ts"
+      "./internals/scripts/CheckBuiltsExist.js"
     ]
   },
   "devDependencies": {
