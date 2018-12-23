@@ -1300,6 +1300,13 @@
   resolved "https://registry.npmjs.org/@types/node/-/node-8.10.36.tgz#eac05d576fbcd0b4ea3c912dc58c20475c08d9e4"
   integrity sha512-SL6KhfM7PTqiFmbCW3eVNwVBZ+88Mrzbuvn9olPsfv43mbiWaFY+nRcz/TGGku0/lc2FepdMbImdMY1JrQ+zbw==
 
+"@types/nodegit@^0.22.7":
+  version "0.22.7"
+  resolved "https://registry.yarnpkg.com/@types/nodegit/-/nodegit-0.22.7.tgz#e4e3f9f2a0e8a6f13234748e6e12c06c864879ba"
+  integrity sha512-ZMsQfod9Lsxn5V5yS2Pyf46S31CGD26gP1uKmth041NhNyd3qcJvkhe/2072TgwwdXx4f+W6wdh1Vvu1e34l/A==
+  dependencies:
+    "@types/node" "*"
+
 "@types/prop-types@*":
   version "15.5.8"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.5.8.tgz#8ae4e0ea205fe95c3901a5a1df7f66495e3a56ce"
@@ -1612,6 +1619,11 @@ ajv@^6.5.5:
     fast-json-stable-stringify "^2.0.0"
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
+
+all@^0.0.0:
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/all/-/all-0.0.0.tgz#fb2aa75d4759d40e39ecbb118fabf0cc11ff554f"
+  integrity sha1-+yqnXUdZ1A457LsRj6vwzBH/VU8=
 
 alphanum-sort@^1.0.0:
   version "1.0.2"
